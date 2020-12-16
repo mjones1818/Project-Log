@@ -7,4 +7,6 @@ class Project < ApplicationRecord
 
   belongs_to :user
   belongs_to :type
+
+  has_many_attached :images
 end

@@ -21,7 +21,7 @@ Shaman pickled asymmetrical copper mug, sriracha seitan mumblecore chicharrones 
 
 HERE
 
-photo_link = "https://cdn.shopify.com/s/files/1/1260/5025/products/Sway_maple_1200x1200.jpg?v=1568755883"
+
 t = Type.create(name: "Woodworking", description: "Wood projects")
 u = User.create(name: "mike", email: "email.com", password: "password")
 
@@ -30,7 +30,7 @@ part2 = Part.create(name: "test", description: "test test test", link: "link")
 tool = Tool.create(name: "Welder", description: "Used to fuse metals together", link: "link")
 
 3.times do 
-  project = Project.create(name: "Desk", brief_description: "Wood slab sit/stand desk", main_photo: photo_link, main_description: main_description, public: true, user_id: u.id, type_id: t.id)
+  project = Project.create(name: "Desk", brief_description: "Wood slab sit/stand desk", main_description: main_description, public: true, user_id: u.id, type_id: t.id)
   project.parts << part
   p = ProjectPart.last
   p.quantity = 3
@@ -42,4 +42,10 @@ tool = Tool.create(name: "Welder", description: "Used to fuse metals together", 
   p.save
 
   project.tools << tool
+  x = 1
+  3.times do 
+    project.images.attach(io: File.open("app/assets/images/#{x.to_s}.jpeg"), filename: "#{x.to_s}.jpeg")
+    x += 1
+  end
+  
 end

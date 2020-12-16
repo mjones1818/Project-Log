@@ -1,0 +1,9 @@
+<%= bootstrap_form_for(@project, label_errors: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f|%>
+  <%= f.collection_radio_buttons :type_id, Type.all, :id, :name %>
+  <%= f.collection_radio_buttons :user_id, User.all, :id, :name%>
+  <%= f.text_field :name, control_col: "col-sm-3" %> <br>
+  <%= f.file_field :images, multiple: true, name: "project[images][]" %>
+  <br>
+  <%= f.submit %>
+<% end %>
+

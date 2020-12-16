@@ -7,7 +7,7 @@
   <div class="card-columns">
     <% @projects.each do |project| %>
       <div class="card">
-        <img class="card-img-top" src=<%= project.main_photo %> alt="Card image cap">
+        <%= image_tag(project.images[0], class: "card-img-top" ) unless project.images.empty? %>
         <div class="card-body">
           <h5 class="card-title"><%= project.name %></h5>
           <p class="card-text"> <%= project.brief_description %></p>
