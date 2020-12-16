@@ -1,0 +1,58 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.card{
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  padding: 14px 80px 18px 36px;
+cursor: pointer;
+}
+
+.card:hover{
+  
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 8px 12px rgba(0,0,0,.06);
+}
+
+.container {
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  margin: 12px auto;
+  max-width: 960px;
+  padding: 2.25%; /* 18px / 800px */
+  width: 85%;
+  position: relative;
+  background-color: white;
+}
+#carouselExampleIndicators {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+
+}
+.carousel-inner > .carousel-item > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+.carousel-indicators li {
+  background-color: black !important;
+}
+
+.title, .brief_description{
+  text-align: center;
+}
+
+.creator {
+  text-align: left;
+}
+
+.list-group {
+  width: 40%;
+}
+
+.breadcrumb {
+  background-color: transparent !important;
+}

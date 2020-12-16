@@ -1,0 +1,23 @@
+<br>
+<h1>All Projects</h1>
+
+<br>
+
+<div class="card-deck">
+  <div class="card-columns">
+    <% @projects.each do |project| %>
+      <div class="card">
+        <img class="card-img-top" src=<%= project.main_photo %> alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= project.name %></h5>
+          <p class="card-text"> <%= project.brief_description %></p>
+          <a href=<%="/projects/#{project.id}" %> class="stretched-link"></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Created: <%= format_time(project.created_at) %></small>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
