@@ -2,7 +2,7 @@
   <%= f.collection_radio_buttons :type_id, Type.all, :id, :name %>
   <%= f.collection_radio_buttons :user_id, User.all, :id, :name%>
   <%= f.text_field :name, control_col: "col-sm-3" %> <br>
-  <%= f.file_field :images, multiple: true, name: "project[images][]" %>
+  <%= f.file_field :images, multiple: true, name: "project[images][]", control_col: "col-sm-3" %>
   <br>
   <%= f.submit %>
 <% end %>

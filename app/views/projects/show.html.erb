@@ -18,15 +18,11 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <%= image_tag(@project.images[0]) %>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag(@project.images[1]) %>
-      </div> 
-      <div class="carousel-item">
-        <%= image_tag(@project.images[2]) %>
-      </div>
+      <% @project.images.each_with_index do |image, index| %>
+        <div class="<%=  "carousel-item #{"active" if index == 0}" %>">
+          <%= image_tag(image) %>
+        </div> 
+      <% end %>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
