@@ -10,12 +10,13 @@
   <% end %>
   <%= f.label :parts %>
   
-  <%= f.fields_for :parts do |part| %>
+  <%= f.fields_for :project_parts do |part| %>
     <%= render 'part_fields', :f => part %>
   <% end %>
 
   <div class="links">
-  <%= link_to_add_association "Add part", f, :parts %>
+  <%= link_to_add_association "Add part", f, :parts, 
+  :wrap_object => Proc.new {|quantity| quantity.project_parts.build; quantity } %>
   </div>
   <%= f.submit %>
 <% end %>
