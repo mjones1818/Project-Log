@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
   def new
-
+    
   end
 
   def index

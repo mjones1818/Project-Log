@@ -21,8 +21,15 @@ Shaman pickled asymmetrical copper mug, sriracha seitan mumblecore chicharrones 
 
 HERE
 
+short_description = <<-HERE
+Shaman pickled asymmetrical copper mug, sriracha seitan mumblecore chicharrones authentic kitsch master cleanse coloring book slow-carb.
+HERE
 
-t = Type.create(name: "Woodworking", description: "Wood projects")
+types = ['Woodworking', 'Metalworking', 'Electronics', '3D Printing', 'Crafts']
+types.each do |type|
+  Type.create(name: "#{type}", description: "#{short_description}")
+end
+
 u = User.create(name: "mike", email: "email.com", password: "password")
 
 part = Part.create(name: "Arduino", description: "The brains of the project", link: "link")
@@ -30,7 +37,7 @@ part2 = Part.create(name: "test", description: "test test test", link: "link")
 tool = Tool.create(name: "Welder", description: "Used to fuse metals together", link: "link")
 
 3.times do 
-  project = Project.create(name: "Desk", brief_description: "Wood slab sit/stand desk", main_description: main_description, public: true, user_id: u.id, type_id: t.id)
+  project = Project.create(name: "Desk", brief_description: "Wood slab sit/stand desk", main_description: main_description, public: true, user_id: u.id, type_id: Type.all.sample.id)
   project.parts << part
   p = ProjectPart.last
   p.quantity = 3
