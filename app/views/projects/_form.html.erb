@@ -1,3 +1,4 @@
+
 <%= bootstrap_form_for(@project, label_errors: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f|%>
   <%= f.text_field :name, control_col: "col-sm-3" %> <br>
   <%= f.collection_radio_buttons :type_id, Type.all, :id, :name %>
@@ -10,13 +11,12 @@
   <% end %>
   <%= f.label :parts %>
   
-  <%= f.fields_for :project_parts do |part| %>
+  <%= f.fields_for :parts do |part| %>
     <%= render 'part_fields', :f => part %>
   <% end %>
 
   <div class="links">
-  <%= link_to_add_association "Add part", f, :parts, 
-  :wrap_object => Proc.new {|quantity| quantity.project_parts.build; quantity } %>
+  <%= link_to_add_association "Add part", f, :parts  %>
   </div>
   <%= f.submit %>
 <% end %>
