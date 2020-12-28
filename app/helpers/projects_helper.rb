@@ -6,4 +6,5 @@ module ProjectsHelper
   def quantity(part)
     ProjectPart.where(project_id: @project.id, part_id: part.id).first.quantity
   end
+
 end

@@ -1,0 +1,14 @@
+<div class="container">
+<h4>Enter Quantities</h4>
+<%= form_tag quantity_update_path(@project), method: 'patch', layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do %>
+  <% @project.parts.each do |part| %>
+    <div class="form-group">
+    <%= label_tag part.name %>
+    <%= number_field_tag "part[#{part.id}][quantity]", nil, placeholder: 'quantity' %>
+    </div>
+  <% end %>
+  <%= submit_tag %>
+  
+<% end %>
+
+</div>

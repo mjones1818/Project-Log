@@ -1,4 +1,5 @@
 class TypesController < ApplicationController
+  before_action :require_login
   def new
 
   end
@@ -25,5 +26,12 @@ class TypesController < ApplicationController
 
   def update
     
+  end
+
+  private
+
+  def require_login
+    flash[:notice] = SIGN_IN_ERROR
+    redirect_to signin_path unless session.include? :user_id
   end
 end

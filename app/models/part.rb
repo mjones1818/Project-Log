@@ -6,7 +6,7 @@ class Part < ApplicationRecord
     ProjectPart.find_by()
   end
 
-  def quantity
+  def quantity=(part)
     
   end
 

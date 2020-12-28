@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#login', as: 'login'
   delete '/logout', to: 'sessions#logout', as: 'logout'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get '/project/:id/parts/quantities', to: 'parts#quantities', as: 'quantity' 
+  patch '/project/:id/parts/quantities', to: 'parts#quantity_update', as: 'quantity_update'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

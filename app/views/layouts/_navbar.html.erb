@@ -16,13 +16,17 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% Type.all.each do |type| %>
             <%= link_to type.name, type_path(type), class: "dropdown-item" %>
-          <%  end%>
+          <%end%>
         </div>
       <li class="nav-item">
-        <a class="nav-link" href="/signin">Sign in </a>
+        <% if !logged_in? %>
+          <a class="nav-link" href="/signin">Sign in</a>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Logout", logout_path, method: "delete", class: "nav-link" %>
+        <% if logged_in? %>
+          <%= link_to "Logout", logout_path, method: "delete", class: "nav-link" %>
+        <% end %>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

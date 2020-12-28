@@ -1,4 +1,5 @@
 class ToolsController < ApplicationController
+  before_action :require_login
   def new
     @tool = Tool.new
   end
@@ -33,4 +34,8 @@ class ToolsController < ApplicationController
     params.require(:tool).permit(:name, :description)
   end
   
+  def require_login
+    flash[:notice] = SIGN_IN_ERROR
+    redirect_to signin_path unless session.include? :user_id
+  end
 end

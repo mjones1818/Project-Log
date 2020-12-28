@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
-  
+  before_action :require_login
+  skip_before_action :require_login, only: [:index]
+
   def new
     @project = Project.new
     #@project_part = @project.project_parts.build
@@ -9,15 +11,18 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    byebug
     @project = Project.new(project_params)
     @project.user_id = User.first.id
+    @project.save
     
     #project.user_id = session[:user_id]
     if @project.save #this is where validations happen
       @project.parts.each
       @project.images.purge
       @project.images.attach(project_params[:images])
+      if @project.parts.any?
+        redirect_to quantity_path(@project) and return
+      end
       redirect_to project_path(@project)
     else
       render :new
@@ -34,6 +39,11 @@ class ProjectsController < ApplicationController
   end
 
   private
+  
+  def require_login
+    flash[:notice] = SIGN_IN_ERROR
+    redirect_to signin_path unless session.include? :user_id
+  end
 
   def get_project
     @project = Project.find_by(id: params[:id])
@@ -44,7 +54,13 @@ class ProjectsController < ApplicationController
   end
 
   def part_params
-    params.require(:project).permit(parts_attributes: [project_parts_attributes: [:quantity]])
+    params.require(:project).permit(parts_attributes: [:name, project_part: [:quantity]])
+  end
+
+  def part_param
+    part_params[:parts_attributes].each do |key, value|
+      byebug
+    end
   end
 
   def all_params
