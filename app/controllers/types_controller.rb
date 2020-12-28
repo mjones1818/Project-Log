@@ -4,12 +4,8 @@ class TypesController < ApplicationController
 
   end
 
-  def index
-
-  end
-
   def show
-
+    @projects = Project.where(type_id: params[:id])
   end
 
   def create

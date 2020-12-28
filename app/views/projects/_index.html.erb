@@ -1,0 +1,19 @@
+<div class="card-deck">
+  <div class="card-columns">
+    <% @projects.each do |project| %>
+      <% if project.public %>
+        <div class="card">
+          <%= image_tag(project.images[0], class: "card-img-top" ) unless project.images.empty? %>
+          <div class="card-body">
+            <h5 class="card-title"><%= project.name %></h5>
+            <p class="card-text"> <%= project.brief_description %></p>
+            <a href=<%="/projects/#{project.id}" %> class="stretched-link"></a>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Created: <%= format_time(project.created_at) %></small>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
