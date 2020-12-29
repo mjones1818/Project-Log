@@ -5,6 +5,7 @@ Type.destroy_all
 Part.destroy_all
 Tool.destroy_all
 
+
 def hipster_sentences(sentences)
   require 'net/http'
   require 'uri'
@@ -40,8 +41,8 @@ u4 = User.create(name: "cameron", email: "email.com", password: "password")
 u5 = User.create(name: "evan", email: "email.com", password: "password")
 
 
-part = Part.create(name: "Arduino", description: "The brains of the project", link: "link")
-part2 = Part.create(name: "test", description: "test test test", link: "link")
+part = Part.create(name: "Arduino", description: "The brains of the project", link: "https://store.arduino.cc/usa/arduino-uno-rev3")
+part2 = Part.create(name: "Metal", description: "Hot rolled steel", link: "https://www.metalsupermarkets.com/metals/hot-rolled-steel/hot-rolled-steel-a36-square-bar/")
 tool = Tool.create(name: "Welder", description: "Welds stuff", link: "link")
 
 20.times do 

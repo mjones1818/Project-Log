@@ -4,9 +4,7 @@
     <%= f.text_field :name, inline: true%>
     <%= f.text_field :description, inline: true %>
     <%= f.text_field :link %>
-    <%= f.fields_for :project_part do |pp| %>
-      <%= pp.number_field :quantity %>
-    <% end %>
+
 
     <%= link_to_remove_association "remove", f %>
   </div>

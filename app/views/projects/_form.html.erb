@@ -1,19 +1,21 @@
 
 <%= bootstrap_form_for(@project, label_errors: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f|%>
   <%= f.text_field :name, control_col: "col-sm-3" %> <br>
+  <%= f.form_group do %>
+    <%= f.check_box :public, inline: true, layout: :default, name: "project[public]" %> 
+  <% end %>
   <%= f.collection_radio_buttons :type_id, Type.all, :id, :name %>
   <%= f.text_field :brief_description %>
   <%= f.text_area :main_description %>
   <%= f.file_field :images, multiple: true, name: "project[images][]", control_col: "col-sm-4", placeholder: "Select mutliple images" %>
   <br>
-  <%= f.form_group do %>
-    <%= f.check_box :public, inline: true, layout: :default, name: "project[public]" %> 
-  <% end %>
-  <%= f.label :parts %>
+
   
+  <%= f.collection_check_boxes :parts, Part.all, :id, :name %>
   <%= f.fields_for :parts do |part| %>
     <%= render 'part_fields', :f => part %>
   <% end %>
+  <%= f.label "Add a new part" %>
 
   <div class="links">
   <%= link_to_add_association "Add part", f, :parts%>

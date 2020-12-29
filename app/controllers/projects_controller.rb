@@ -8,12 +8,13 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    byebug
     @project = Project.new(project_params)
     @project.user_id = session[:user_id]
     @project.save
-
+    @project.part_ids += existing_parts
     if @project.save #this is where validations happen
-      @project.parts.each
+      #@project.parts.each
       @project.images.purge
       @project.images.attach(project_params[:images])
       if @project.parts.any?
@@ -61,6 +62,10 @@ class ProjectsController < ApplicationController
 
   def part_params
     params.require(:project).permit(parts_attributes: [:name, project_part: [:quantity]])
+  end
+
+  def existing_parts
+    params.require(:project).permit(parts: [])[:parts]
   end
 
   def part_param

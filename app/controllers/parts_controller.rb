@@ -9,7 +9,7 @@ class PartsController < ApplicationController
   end
 
   def show
-
+    @part = Part.find_by(id: params[:id])
   end
 
   def create
