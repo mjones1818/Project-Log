@@ -12,5 +12,5 @@ class Project < ApplicationRecord
  
   accepts_nested_attributes_for :parts, allow_destroy: true
 
-
+  
 end
