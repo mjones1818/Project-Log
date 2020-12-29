@@ -36,9 +36,13 @@ class ProjectsController < ApplicationController
 
   def delete
     @project = Project.find_by(id: params[:id])
-    @project.destroy
-    redirect_to user_path(@project.user)
-    byebug
+    if @project.user == helpers.current_user
+      @project.destroy
+      redirect_to user_path(@project.user)
+    else
+      flash[:warning] = "Unable to delete a different user's project!"
+      redirect_to project_path(@project)
+    end
   end
   private
   

@@ -1,16 +1,22 @@
 <br>
-<nav aria-label="breadcrumb">
+
+
+
+<div class="container">
+  <% if flash[:warning] %>
+    <div class="notice"><%= flash[:warning] %></div>
+  <% end %>
+  <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Home</a></li>
     <li class="breadcrumb-item"><a href=<%="/types/#{@project.type.id}" %>><%= @project.type.name %></a></li>
     <li class="breadcrumb-item active" aria-current="page"><%= @project.name %></li>
   </ol>
-</nav>
-
-
-<div class="container">
+  </nav>
   <div class="title"><h1><%= @project.name %></h1></div>
+  <br>
   <div class="brief_description"><%= @project.brief_description %></div>
+  <br>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -63,6 +69,8 @@
   <h3>Description</h3>
   <p><%= @project.main_description %></p>
   <br>
-  <%= link_to "Edit this project", edit_project_path, class: "btn btn-primary" %>
-  <%= link_to "Delete this project", delete_project_path(@project), class: "btn btn-danger", method: 'delete' %>
+  <% if @project.user == current_user %>
+    <%= link_to "Edit this project", edit_project_path, class: "btn btn-primary" %>
+    <%= link_to "Delete this project", delete_project_path(@project), class: "btn btn-danger", method: 'delete' %>
+  <% end %>
 </div> 

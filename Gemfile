@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap_form'
 gem 'cocoon'
-gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
 
