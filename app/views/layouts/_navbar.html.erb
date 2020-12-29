@@ -28,15 +28,16 @@
           <a class="nav-link" href="/signup">Sign up</a>
         <% end %>
       </li>
-      <li class="nav-item">
-        <% if logged_in? %>
-          <%= link_to "Logout", logout_path, method: "delete", class: "nav-link" %>
-        <% end %>
-      </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      <div class="nav-item">
+        <% if logged_in? %>
+          <%= link_to "#{current_user.name.titleize}", user_path(current_user), class: "nav-link", id: "nav_color" %>
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <% if logged_in? %>
+          <%= link_to "Logout", logout_path, method: "delete", class: "nav-link", id: "nav_color" %>
+        <% end %>
+      </div>
   </div>
 </nav>
