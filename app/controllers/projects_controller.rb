@@ -4,9 +4,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    #@project_part = @project.project_parts.build
-    #@project_part = @project_part.build_part
-
     render 'new'
   end
 
@@ -37,6 +34,12 @@ class ProjectsController < ApplicationController
     @project = Project.find_by(id: params[:id])
   end
 
+  def delete
+    @project = Project.find_by(id: params[:id])
+    @project.destroy
+    redirect_to user_path(@project.user)
+    byebug
+  end
   private
   
   def require_login

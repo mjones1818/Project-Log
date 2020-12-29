@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  delete '/projects/:id', to: 'projects#delete', as: 'delete_project'
   resources :users, only: [:show]
   resources :types
   resources :tools

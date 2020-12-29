@@ -2,7 +2,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Home</a></li>
-    <li class="breadcrumb-item"><a href=<%="/#{@project.type.id}" %>><%= @project.type.name %></a></li>
+    <li class="breadcrumb-item"><a href=<%="/types/#{@project.type.id}" %>><%= @project.type.name %></a></li>
     <li class="breadcrumb-item active" aria-current="page"><%= @project.name %></li>
   </ol>
 </nav>
@@ -62,4 +62,7 @@
   <br>
   <h3>Description</h3>
   <p><%= @project.main_description %></p>
+  <br>
+  <%= link_to "Edit this project", edit_project_path, class: "btn btn-primary" %>
+  <%= link_to "Delete this project", delete_project_path(@project), class: "btn btn-danger", method: 'delete' %>
 </div> 
