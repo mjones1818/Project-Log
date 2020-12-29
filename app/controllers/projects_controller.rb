@@ -12,10 +12,9 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.user_id = User.first.id
+    @project.user_id = session[:user_id]
     @project.save
-    
-    #project.user_id = session[:user_id]
+
     if @project.save #this is where validations happen
       @project.parts.each
       @project.images.purge

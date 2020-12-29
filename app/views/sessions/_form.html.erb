@@ -4,7 +4,8 @@
 <%= form_for :user, url: "/login", method: "post" do |f| %>
   <%= f.text_field :name, placeholder: "Name" %>
   <%= f.password_field :password, placeholder: "Password" %>
-  <%= f.submit %>
+  <%= f.submit 'Login'%>
+  <br>
   <br>
   <%= link_to('Log in with Google!', '/auth/google_oauth2') %> 
 <% end %>

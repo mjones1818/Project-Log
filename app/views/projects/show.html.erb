@@ -36,7 +36,7 @@
   <br>
   <br>
   <div class="creator">
-    <h3>Created by: <%= @project.user.name.titleize %></h3>
+    <h3>Created by: <%= link_to @project.user.name.titleize, user_path(@project.user) %></h3>
     <h6>Date added: <%= format_time(@project.created_at) %></h6>
     <h6><%= @project.public ? "This page is public" : "This page is private"%></h6>
   </div>
