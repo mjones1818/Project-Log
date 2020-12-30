@@ -4,7 +4,7 @@
   <% @project.parts.each do |part| %>
     <div class="form-group">
     <%= label_tag part.name %>
-    <%= number_field_tag "part[#{part.id}][quantity]", nil, placeholder: 'quantity' %>
+    <%= number_field_tag "part[#{part.id}][quantity]", nil, placeholder: 'quantity', value: quantity_field(part)%>
     </div>
   <% end %>
   <%= submit_tag %>

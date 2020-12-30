@@ -11,7 +11,7 @@
   <br>
 
   
-  <%= f.collection_check_boxes :parts, Part.all, :id, :name %>
+  <%= f.collection_check_boxes :parts, @parts, :id, :name %>
   <%= f.fields_for :parts do |part| %>
     <%= render 'part_fields', :f => part %>
   <% end %>
