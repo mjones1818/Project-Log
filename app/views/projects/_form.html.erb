@@ -1,3 +1,12 @@
+<% if @project.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @project.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= bootstrap_form_for(@project, label_errors: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f|%>
   <%= f.text_field :name, control_col: "col-sm-3" %> <br>

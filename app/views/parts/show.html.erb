@@ -3,7 +3,7 @@
   <br>
   <p><%= @part.description %></p>
   <br>
-  <%= link_to "Click her to view part webpage", @part.link %>
+  <%= link_to "Click her to view part webpage", @part.link unless @part.link.empty?%>
 
 
 </div>

@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
       end
       redirect_to project_path(@project)
     else
+      @parts = Part.all
       render :new
     end
   end
