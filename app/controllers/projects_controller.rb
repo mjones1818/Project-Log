@@ -4,11 +4,11 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @parts = Part.all
     render 'new'
   end
 
   def create
-    byebug
     @project = Project.new(project_params)
     @project.user_id = session[:user_id]
     @project.save
@@ -51,9 +51,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    
     @project = Project.find_by(id: params[:id])
-    byebug
     @project.update(project_params)
     @project.part_ids += existing_parts
     if @project.save #this is where validations happen
