@@ -1,4 +1,4 @@
 <br>
-<h1><%= @projects.first.type.name %></h1>
+<h1><%= @projects.first.type.name unless @projects.empty? %></h1>
 <br>
 <%= render 'projects/index' %>

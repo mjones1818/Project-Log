@@ -13,6 +13,6 @@ class Project < ApplicationRecord
   validates :brief_description, presence: true
   validates(:brief_description, { :length => { :in => 6..255 } })
   validates :images, attached: true
-  validates :images, limit: {min: 1, max: 5, message: "- Attach 1- 5 photos"}
+  validates :images, limit: {min: 1, max: 10, message: "- Attach 1- 10 photos"}
   
 end

@@ -3,6 +3,7 @@ User.destroy_all
 Project.destroy_all
 Type.destroy_all
 Part.destroy_all
+ProjectPart.destroy_all
 
 
 
@@ -39,25 +40,36 @@ part = Part.create(name: "Arduino", description: "The brains of the project", li
 part2 = Part.create(name: "Metal", description: "Hot rolled steel", link: "https://www.metalsupermarkets.com/metals/hot-rolled-steel/hot-rolled-steel-a36-square-bar/")
 
 
-40.times do 
-  project = Project.new(name: "Desk", brief_description: hipster_sentences(rand(1..3)), main_description: hipster_paras(rand(2..6)), public: ([true, false].sample), user_id: User.all.sample.id, type_id: Type.all.sample.id)
-  
-  project.parts << part
-  p = ProjectPart.last
-  p.quantity = rand(1..5)
-
-
-  project.parts << part2
-  p = ProjectPart.last
-  p.quantity = rand(1..5)
-
-
-  x = 1
-  3.times do 
-    project.images.attach(io: File.open("app/assets/images/#{rand(1..5).to_s}/#{x.to_s}.jpeg"), filename: "#{x.to_s}.jpeg")
-    x += 1
+5.times do
+  types = Dir.entries("app/assets/images")
+  types = types.delete_if {|i| i.starts_with?(".")}
+  types.each_with_index do |type, index|
+    filenames = Dir.entries("app/assets/images/#{type}")
+    filenames = filenames.delete_if {|i| i.starts_with?(".")}
+    filenames.each do |file|
+      project = Project.new(name: file, brief_description: hipster_sentences(rand(1..3)), main_description: hipster_paras(rand(2..6)), public: ([true, false].sample), user_id: User.all.sample.id, type_id: Type.find_by(name: type).id)
+      image_count = Dir.entries("app/assets/images/#{type}/#{file}").delete_if {|i| i.starts_with?(".")}.count
+      x = 1
+      image_count.times do 
+        project.images.attach(io: File.open("app/assets/images/#{type}/#{file}/#{x.to_s}.jpeg"), filename: "#{x.to_s}.jpeg")
+        x += 1
+      end
+      
+      project.parts << part
+      project.save
+      p = project.project_parts.last
+      p.quantity = rand(1..5)
+      p.save
+      
+      project.parts << part2
+      project.save
+      p = project.project_parts.last
+      p.quantity = rand(1..5)
+      p.save
+      project.save
+      
+    end
   end
-  project.save
 end
 
 
