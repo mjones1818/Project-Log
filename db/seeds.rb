@@ -3,7 +3,7 @@ User.destroy_all
 Project.destroy_all
 Type.destroy_all
 Part.destroy_all
-Tool.destroy_all
+
 
 
 def hipster_sentences(sentences)
@@ -43,7 +43,7 @@ u5 = User.create(name: "evan", email: "email.com", password: "password")
 
 part = Part.create(name: "Arduino", description: "The brains of the project", link: "https://store.arduino.cc/usa/arduino-uno-rev3")
 part2 = Part.create(name: "Metal", description: "Hot rolled steel", link: "https://www.metalsupermarkets.com/metals/hot-rolled-steel/hot-rolled-steel-a36-square-bar/")
-tool = Tool.create(name: "Welder", description: "Welds stuff", link: "link")
+
 
 20.times do 
   project = Project.create(name: "Desk", brief_description: hipster_sentences(2), main_description: hipster_paras(3), public: true, user_id: User.all.sample.id, type_id: Type.all.sample.id)
@@ -57,7 +57,7 @@ tool = Tool.create(name: "Welder", description: "Welds stuff", link: "link")
   p.quantity = rand(1..5)
   p.save
 
-  project.tools << tool
+
   x = 1
   3.times do 
     project.images.attach(io: File.open("app/assets/images/#{rand(1..5).to_s}/#{x.to_s}.jpeg"), filename: "#{x.to_s}.jpeg")
