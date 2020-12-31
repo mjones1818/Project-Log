@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
     @project.user_id = session[:user_id]
     @project.save
     @project.part_ids += existing_parts
-    if @project.save #this is where validations happen
+    if @project.save
       @project.images.purge
       @project.images.attach(project_params[:images])
       if @project.parts.any?
@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
 
 
   def index
-    @projects = Project.all
+    @projects = Project.public_projects
   end
 
   def show
@@ -108,4 +108,3 @@ class ProjectsController < ApplicationController
   end
 end
 
-#Part.attribute_names.map(&:to_sym).push(:_destroy)
