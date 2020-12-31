@@ -12,6 +12,6 @@
   <%= f.text_field :name, control_col: "col-sm-4" %>
   <%= f.text_field :email, control_col: "col-sm-4" %>
   <%= f.password_field :password, control_col: "col-sm-4" %>
-  <%= f.submit %>
+  <%= f.submit %>  Or  <%= link_to('Log in with Google!', '/auth/google_oauth2') %> 
 
 <% end %>

@@ -19,6 +19,3 @@ Rails.application.routes.draw do
   patch '/project/:id/parts/quantities/edit', to: 'parts#quantity_update', as: 'quantity_update'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
-
-# /types/#{project.type.name.downcase.parameterize}/projects/#{project.id}
-# <a href=<%="" %> class="stretched-link"></a>
