@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
         @project.images.attach(project_params[:images])
       end
       if @project.parts.any?
-        redirect_to "/project/#{@project.id}/parts/quantities" and return
+        redirect_to quantity_path and return
         render 'parts/new'
       end
       redirect_to project_path(@project)

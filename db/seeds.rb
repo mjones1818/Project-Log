@@ -40,14 +40,14 @@ part = Part.create(name: "Arduino", description: "The brains of the project", li
 part2 = Part.create(name: "Metal", description: "Hot rolled steel", link: "https://www.metalsupermarkets.com/metals/hot-rolled-steel/hot-rolled-steel-a36-square-bar/")
 
 
-5.times do
+1.times do
   types = Dir.entries("app/assets/images")
   types = types.delete_if {|i| i.starts_with?(".")}
   types.each_with_index do |type, index|
     filenames = Dir.entries("app/assets/images/#{type}")
     filenames = filenames.delete_if {|i| i.starts_with?(".")}
     filenames.each do |file|
-      project = Project.new(name: file, brief_description: hipster_sentences(rand(1..3)), main_description: hipster_paras(rand(2..6)), public: ([true, false].sample), user_id: User.all.sample.id, type_id: Type.find_by(name: type).id)
+      project = Project.new(name: file, brief_description: hipster_sentences(rand(1..3)), main_description: hipster_paras(rand(2..6)), public: ([true, true].sample), user_id: User.all.sample.id, type_id: Type.find_by(name: type).id)
       image_count = Dir.entries("app/assets/images/#{type}/#{file}").delete_if {|i| i.starts_with?(".")}.count
       x = 1
       image_count.times do 
