@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  delete '/projects/:id', to: 'projects#delete', as: 'delete_project'
   resources :users, only: [:show]
   resources :types, only: [:show] do
     resources :projects, only: [:show]
   end
   resources :parts, only: [:show]
   resources :projects, except: [:delete]
-  delete '/projects/:id', to: 'projects#delete', as: 'delete_project'
+  
   get '/', to: 'projects#index', as: "home"
   get '/signin', to: 'sessions#new', as: 'signin'
   post '/signin', to: 'sessions#create'

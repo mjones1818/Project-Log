@@ -16,7 +16,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% Type.all.each do |type| %>
-            <%= link_to type.name, type_path(type), class: "dropdown-item" %>
+            <%= link_to type.name, type_path(type.name.downcase), class: "dropdown-item" %>
           <%end%>
         </div>
     </ul>
