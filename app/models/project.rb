@@ -14,5 +14,5 @@ class Project < ApplicationRecord
   validates(:brief_description, { :length => { :in => 6..255 } })
   validates :images, attached: true
   validates :images, limit: {min: 1, max: 10, message: "- Attach 1- 10 photos"}
-  validates :name, presence: true
+  scope :type, ->(type) {where("name = ?", type)}
 end

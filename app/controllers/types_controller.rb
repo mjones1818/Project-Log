@@ -5,7 +5,12 @@ class TypesController < ApplicationController
   end
 
   def show
-    @projects = Project.where(type_id: params[:id])
+    if Type.find_by(name: params[:id].titleize) == nil
+      @projects = Project.where(type_id: params[:id])
+    else
+      type = Type.find_by(name: params[:id].titleize)
+      @projects = Project.where(type_id: type.id)
+    end
   end
 
   def create

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users, only: [:show]
-  resources :types, only: [:show]
+  resources :types, only: [:show] do
+    resources :projects, only: [:show]
+  end
   resources :parts, only: [:show]
   resources :projects, except: [:delete]
   delete '/projects/:id', to: 'projects#delete', as: 'delete_project'
@@ -16,3 +18,6 @@ Rails.application.routes.draw do
   patch '/project/:id/parts/quantities/edit', to: 'parts#quantity_update', as: 'quantity_update'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+# /types/#{project.type.name.downcase.parameterize}/projects/#{project.id}
+# <a href=<%="" %> class="stretched-link"></a>

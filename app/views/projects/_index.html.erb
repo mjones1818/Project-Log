@@ -7,7 +7,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= project.name %></h5>
             <p class="card-text"> <%= project.brief_description %></p>
-            <a href=<%="/projects/#{project.id}" %> class="stretched-link"></a>
+            <a href=<%="/types/#{project.type.name.downcase.parameterize}/projects/#{project.id}" %> class="stretched-link"></a>
           </div>
           <div class="card-footer">
             <small class="text-muted">Created by: <%= project.user.name.titleize %></small> <br>
