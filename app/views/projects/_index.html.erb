@@ -10,7 +10,8 @@
             <a href=<%="/projects/#{project.id}" %> class="stretched-link"></a>
           </div>
           <div class="card-footer">
-            <small class="text-muted">Created: <%= format_time(project.created_at) %></small>
+            <small class="text-muted">Created by: <%= project.user.name.titleize %></small> <br>
+            <small class="text-muted">On: <%= format_time(project.created_at) %></small>
           </div>
         </div>
       <% end %>
