@@ -1,4 +1,6 @@
 <br>
-<h1><%= @projects.first.type.name unless @projects.empty? %></h1>
+<div class="title">
+  <h1><%= @projects.first.type.name unless @projects.empty? %></h1>
+</div>
 <br>
 <%= render 'projects/index' %>
