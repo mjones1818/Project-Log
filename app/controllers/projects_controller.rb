@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:index]
+  before_action :get_project, only: [:show, :delete, :update, :edit]
 
   def new
     @project = Project.new
@@ -26,17 +27,15 @@ class ProjectsController < ApplicationController
     end
   end
 
-
   def index
     @projects = Project.public_projects
   end
 
   def show
-    @project = Project.find_by(id: params[:id])
+  
   end
 
   def delete
-    @project = Project.find_by(id: params[:id])
     if @project.user == helpers.current_user
       @project.destroy
       redirect_to user_path(@project.user)
@@ -47,15 +46,13 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by(id: params[:id])
     @parts = Part.where.not(id: @project.part_ids)
   end
 
   def update
-    @project = Project.find_by(id: params[:id])
     @project.update(project_params)
     @project.part_ids += existing_parts
-    if @project.save #this is where validations happen
+    if @project.save
       if !project_params[:images].nil?
         @project.images.purge
         @project.images.attach(project_params[:images])
@@ -93,18 +90,5 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(parts: [])[:parts]
   end
 
-  def part_param
-    part_params[:parts_attributes].each do |key, value|
-      byebug
-    end
-  end
-
-  def all_params
-    params.require(:project).permit(:name, :brief_description, :main_description, :public, :type_id, :user_id, images: [], parts_attributes: [:id, :name, :description, :link, :created_at, :updated_at, :_destroy, project_parts_attributes: [:quantity]])
-  end
-
-  def quantity(part)
-    ProjectPart.where(project_id: @project.id, part_id: part.id).first.quantity
-  end
 end
 

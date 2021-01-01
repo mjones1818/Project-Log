@@ -1,39 +1,13 @@
 class PartsController < ApplicationController
   before_action :require_login
-  def new
-    
-  end
-
-  def index
-
-  end
 
   def show
     @part = Part.find_by(id: params[:id])
   end
 
-  def create
-
-  end
-
-  def destroy
-
-  end
-
-  def edit
-
-  end
-
-  def update
-    
-  end
-
   def quantities
     @project = Project.find_by(id: params[:id])
     @quantities = []
-    @project.parts.each do 
-    # <%= number_field_tag "part#{part.id}[quantity]" %>
-    end
   end
 
   def quantity_update

@@ -1,8 +1,6 @@
 class TypesController < ApplicationController
   before_action :require_login
-  def new
 
-  end
 
   def show
     if Type.find_by(name: params[:id].titleize) == nil
@@ -11,22 +9,6 @@ class TypesController < ApplicationController
       type = Type.find_by(name: params[:id].titleize)
       @projects = Project.where(type_id: type.id)
     end
-  end
-
-  def create
-
-  end
-
-  def destroy
-
-  end
-
-  def edit
-
-  end
-
-  def update
-    
   end
 
   private
