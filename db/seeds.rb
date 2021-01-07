@@ -49,9 +49,8 @@ u3 = User.create(name: "joel", email: "joelemail.com", password: "password")
 u4 = User.create(name: "cameron", email: "cameronemail.com", password: "password")
 u5 = User.create(name: "evan", email: "evanemail.com", password: "password")
 
-
 part = Part.create(name: "Arduino", description: "The brains of the project", link: "https://store.arduino.cc/usa/arduino-uno-rev3")
-part2 = Part.create(name: "Metal", description: "Hot rolled steel", link: "https://www.metalsupermarkets.com/metals/hot-rolled-steel/hot-rolled-steel-a36-square-bar/")
+part2 = Part.create(name: "1 1/2 inch hot rolled angle steel", description: "Hot rolled steel", link: "https://www.metalsupermarkets.com/metals/hot-rolled-steel/hot-rolled-steel-a36-square-bar/")
 
 
 10.times do
