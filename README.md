@@ -1,5 +1,5 @@
 # Description
-This website can be used to keep track of all maintenance activity at Sail Chicago. This includes all user activity, parts and work history
+This website can be used to showcase projects
 
 # Install instructions
 Download repository 

@@ -3,6 +3,10 @@
   <h1>All Projects</h1>
 </div>
 <br>
-
+<%= form_tag projects_path, method: 'get' do %>
+  <%= label_tag(:search, "search") %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag("search") %>
+<% end %>
 <%=render 'index' %>
 

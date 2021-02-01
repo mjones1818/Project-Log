@@ -19,7 +19,6 @@
   <br>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-      
       <% @project.images.each_with_index do |image, index| %>
         <% if index == 0 %>
           <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="active"></li> 
@@ -27,8 +26,6 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" ></li> 
         <% end %>
       <% end %>
-      
-     
     </ol>
     <div class="carousel-inner">
       <% @project.images.each_with_index do |image, index| %>

@@ -28,7 +28,11 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.public_projects
+    if params[:search]
+      @projects = Project.where(["public = ? and name = ?", "true", "#{params[:search]}"] )
+    else
+      @projects = Project.public_projects
+    end
   end
 
   def show
